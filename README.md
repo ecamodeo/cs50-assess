@@ -15,8 +15,8 @@ cd ~/aiAssessment
 Step 2: Copy and paste the following two lines into your terminal:
 
 ```
-wget YOUR_GITHUB_RAW_URL/setup.sh
-wget YOUR_GITHUB_RAW_URL/assess
+wget https://raw.githubusercontent.com/ecamodeo/cs50-assess/main/setup.sh
+wget https://raw.githubusercontent.com/ecamodeo/cs50-assess/main/assess
 ```
 
 Step 3: Execute setup.sh and add the API key when prompted:
