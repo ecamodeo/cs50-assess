@@ -52,7 +52,7 @@ If the AI asks you about distro code, you can tell it a particular function was 
 When the assessment is done, submit your work using the slug shown in your Schoology assignment:
 
 ```
-submit50 canisiushs/problems/caesar
+submit50 canisiushs/problems/2026/caesar
 ```
 
 This will upload both your code and your `assessment.json` transcript to your teacher.
