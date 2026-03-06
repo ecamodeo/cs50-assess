@@ -95,7 +95,7 @@ def create_assessment_prompt(code, language):
         assessment_goals += """
 5. **How do changes affect your code** - How could the code in a procedure be modified that would cause this procedure to have a logic error. Describe how the behavior of this procedure would change because of the error."""
 
-    return f"""You are assessing an AP Computer Science Principles student's understanding of their code. Your goal is to ask thoughtful questions that reveal whether they truly understand:
+    return f"""You are assessing an AP Computer Science Principles student's understanding of their code. Your goal is to ask focused questions that reveal whether they truly understand:
 
 {assessment_goals}
 
@@ -104,24 +104,33 @@ def create_assessment_prompt(code, language):
 {code}
 ```
 
+**STRICT RULES — you must follow these exactly:**
+
+1. **Question limit:** Ask 6-8 primary questions. Follow-ups do not count toward this limit, but each question gets at most ONE follow-up (see below). Do NOT exceed 8 primary questions.
+
+2. **Keep it moving:** If a student struggles with a question, you may ask ONE brief follow-up to guide them, then move on regardless of their answer. Do not linger on a topic. A student who does not understand will simply score lower — that is OK.
+
+3. **Code design (#4) should be brief:** Ask at most 1 question about code design decisions. Do not spend significant time on why they named variables or structured things a certain way.
+
+4. **Distro code handling:**
+   - In your opening greeting, tell the student: *"If any part of this code was provided to you as starter code or distribution code, let me know and I'll focus my questions on the code you wrote. But be honest — if you claim code is starter code that you actually wrote, it will be scored as a zero."*
+   - Once the student identifies distro code, do NOT ask in-depth questions about those sections. You may ask at most one simple question like "Can you briefly describe what this section does?" to confirm basic awareness, then move on to their own code.
+   - If the student does NOT identify any distro code, assume all code is theirs and assess normally.
+
 **Your approach:**
-- Ask 6-8 questions total
-- Start with a warm, encouraging greeting
+- Start with a warm, encouraging greeting that includes the distro code instructions above
 - Ask about specific parts of their code (reference line numbers or code snippets)
 - Ask "why" and "how" questions, not just "what"
 - Be conversational and supportive, like a helpful teacher
-- If they struggle, guide them with follow-up questions
-- Adapt based on their responses - dig deeper on interesting points
 - Focus on THEIR understanding, not testing trivia
 - Use markdown formatting for code snippets and formatting when appropriate
-- **IMPORTANT:** If the student mentions that certain parts of the code are "distro code," "starter code," or "distributed code" and asks you not to ask questions about it, respect their request and focus your questions only on the code they wrote themselves
 
 **Language-specific accuracy:**
 - **Python:** Using `=` (assignment) instead of `==` (comparison) in an if statement DOES produce a syntax error in Python
-- **C/C++:** Using `=` (assignment) instead of `==` (comparison) in an if statement does NOT produce a syntax error in C/C++ (it's valid but often unintended - it assigns and then evaluates the result)
+- **C/C++:** Using `=` (assignment) instead of `==` (comparison) in an if statement does NOT produce a syntax error in C/C++ (it's valid but often unintended — it assigns and then evaluates the result)
 - Be precise about what constitutes a syntax error vs a logic error in the specific language being assessed
 
-Start by greeting the student and asking your first question about their code."""
+Start by greeting the student, explaining the distro code policy, and asking your first question about their code."""
 
 
 def conduct_assessment(code, language, student_name):
@@ -147,7 +156,7 @@ def conduct_assessment(code, language, student_name):
     print_header("AP CSP Code Assessment Started")
     console.print(f"Student: {student_name}")
     console.print(f"Time: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    console.print("\nYou'll have a conversation with an AI assistant about your code.")
+    console.print("\nYou'll have a conversation with Jarvis, my AI assistant, about your code.")
     console.print("Answer thoughtfully and explain your reasoning.")
     console.print("Type 'quit' or 'exit' to end early.\n")
     console.print("=" * 60)
